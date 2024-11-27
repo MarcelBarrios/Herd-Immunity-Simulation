@@ -1,3 +1,4 @@
+from datetime import datetime
 from virus import Virus
 from logger import Logger
 from person import Person
@@ -24,13 +25,13 @@ class Simulation(object):
         # Use the _create_population() method to create the list and
         # return it storing it in an attribute here.
         # TODO: Call self._create_population() and pass in the correct parameters.
+        self.num_vaccinated = 0
+        self.current_infected = 0
+        self.total_infected = 0
         self.population = self._create_population()
         self.newly_infected = []
         self.total_interactions = 0
-        self.current_infected = 0
-        self.total_infected = 0
         self.vaccine_total_saves = 0
-        self.num_vaccinated = 0
         self.total_vaccinated = 0
         self.total_dead = 0
         self.deaths_from_interactions = 0
@@ -68,8 +69,6 @@ class Simulation(object):
             person = Person(id, False, self.virus)
             people_list.append(person)
 
-        self.logger.write_metadata(
-            self.pop_size, self.vacc_percentage, self.virus, self.initial_infected)
         return people_list
 
     def _simulation_should_continue(self):
@@ -108,6 +107,8 @@ class Simulation(object):
         self.time_step_counter = 0
         should_continue = True
 
+        simulation_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
         # TODO: Write meta data to the logger. This should be starting
         # statistics for the simulation. It should include the initial
         # population size and the virus.
@@ -118,16 +119,36 @@ class Simulation(object):
             virus_name=self.virus.name,
             mortality_rate=self.virus.mortality_rate,
             basic_repro_num=self.virus.repro_rate,
+            date_run=simulation_date
         )
 
         while should_continue:
             # TODO: Increment the time_step_counter
-            time_step_counter += 1
+            self.time_step_counter += 1
             # TODO: for every iteration of this loop, call self.time_step()
             # Call the _simulation_should_continue method to determine if
             # the simulation should continue
             should_continue = self._simulation_should_continue()
             self.time_step()
+
+            self.logger.log_interactions(
+                self.current_infected,
+                self.total_dead,
+                self.time_step_counter,
+                self.total_interactions,
+                self.pop_size,
+                self.total_vaccinated
+            )
+
+        self.logger.answers_log(
+            self.total_interactions,
+            self.total_dead,
+            self.total_infected,
+            self.virus,
+            self.pop_size,
+            self.vacc_percentage,
+            self.vaccine_total_saves
+        )
 
         living_people = []
 
@@ -243,7 +264,7 @@ if __name__ == "__main__":
     initial_infected = 10
 
     # Make a new instance of the imulation
-    virus = Virus(virus, pop_size, vacc_percentage, initial_infected)
-    sim = Simulation(pop_size, vacc_percentage, initial_infected, virus)
+    virus = Virus(virus_name, repro_num, mortality_rate)
+    sim = Simulation(virus, pop_size, vacc_percentage, initial_infected)
 
     sim.run()

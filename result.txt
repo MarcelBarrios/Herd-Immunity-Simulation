@@ -1,0 +1,27 @@
+
+--- Final Simulation Results ---
+Total Living: 1000
+Total Dead: 100
+Number of Vaccinations: 100
+Reason Simulation Ended: All living people are vaccinated.
+Total Number of Interactions: 90000
+Interactions Resulting in Vaccination: 800
+Interactions Resulting in Death: 100
+
+--- Final Simulation Results ---
+Total Living: 1000
+Total Dead: 100
+Number of Vaccinations: 100
+Reason Simulation Ended: All living people are vaccinated.
+Total Number of Interactions: 90000
+Interactions Resulting in Vaccination: 800
+Interactions Resulting in Death: 100
+
+--- Final Simulation Results ---
+Total Living: 1000
+Total Dead: 100
+Number of Vaccinations: 100
+Reason Simulation Ended: All living people are vaccinated.
+Total Number of Interactions: 90000
+Interactions Resulting in Vaccination: 800
+Interactions Resulting in Death: 100

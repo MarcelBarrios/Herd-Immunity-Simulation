@@ -21,53 +21,79 @@ class Logger(object):
     #   of vaccinated, and the number of steps to reach the end of the simulation.
 
     def write_metadata(self, pop_size, initial_infected, vacc_percentage, virus_name, mortality_rate,
-                       basic_repro_num):
+                       basic_repro_num, date_run):
         # TODO: Finish this method. This line of metadata should be tab-delimited
         # it should create the text file that we will store all logs in.
         # TIP: Use 'w' mode when you open the file. For all other methods, use
         # the 'a' mode to append a new log to the end, since 'w' overwrites the file.
         # NOTE: Make sure to end every line with a '/n' character to ensure that each
         # event logged ends up on a separate line!
-        pass
+        with open(self.file_name, 'w') as file:
+            file.write("Simulation Metadata\n")
+            file.write(
+                "Date Run\tPopulation Size\tInitial Infected\tVaccination Percentage\tVirus Name\tMortality Rate\tBasic Reproduction Number\n")
+            file.write(f"""{date_run}\t{pop_size}\t{initial_infected}\t{vacc_percentage}\t{
+                       virus_name}\t{mortality_rate}\t{basic_repro_num}\n""")
+            file.write("-----\n")
 
-    def log_interactions(self, step_number, number_of_interactions, number_of_new_infections):
+    def log_interactions(self, current_infected, total_dead, time_step_counter, total_interactions, pop_size, total_vaccinated):
         # TODO: Finish this method. Think about how the booleans passed (or not passed)
         # represent all the possible edge cases. Use the values passed along with each person,
         # along with whether they are sick or vaccinated when they interact to determine
         # exactly what happened in the interaction and create a String, and write to your logfile.
-        pass
+        with open(self.file_name, 'a') as file:
+            file.write(f"Simulation Time Step: {time_step_counter}\n")
+            file.write(f"Total Population: {pop_size}\n")
+            file.write(f"Currently Infected: {current_infected}\n")
+            file.write(f"Total Dead: {total_dead}\n")
+            file.write(f"Total Vaccinated: {total_vaccinated}\n")
+            file.write(f"Total Interactions: {total_interactions}\n")
+            file.write("-----\n")
 
     def write_final(self, total_living, total_dead, num_vaccinated, reason_ended, total_interactions, vaccinations_from_interactions, deaths_from_interactions):
-        """
-        Writes the final summary of the simulation to the log file.
 
-        Parameters:
-        - total_living (int): Total number of people still alive.
-        - total_dead (int): Total number of people who have died.
-        - num_vaccinated (int): Number of people vaccinated.
-        - reason_ended (str): Reason why the simulation ended.
-        - total_interactions (int): Total number of interactions during the simulation.
-        - vaccinations_from_interactions (int): Number of interactions that resulted in vaccination.
-        - deaths_from_interactions (int): Number of interactions that resulted in death.
-        """
         with open(self.file_name, 'a') as file:
-            file.write("\n--- Final Simulation Results ---\n")
+            file.write("Final Simulation Results\n\n")
             file.write(f"Total Living: {total_living}\n")
             file.write(f"Total Dead: {total_dead}\n")
             file.write(f"Number of Vaccinations: {num_vaccinated}\n")
             file.write(f"Reason Simulation Ended: {reason_ended}\n")
             file.write(f"Total Number of Interactions: {total_interactions}\n")
-            file.write(f"Interactions Resulting in Vaccination: {
-                       vaccinations_from_interactions}\n")
-            file.write(f"Interactions Resulting in Death: {
-                       deaths_from_interactions}\n")
+            file.write(f"""Interactions Resulting in Vaccination: {
+                       vaccinations_from_interactions}\n""")
+            file.write(f"""Interactions Resulting in Death: {
+                       deaths_from_interactions}\n""")
 
-    def log_infection_survival(self, step_number, population_count, number_of_new_fatalities):
-        # TODO: Finish this method. If the person survives, did_die_from_infection
-        # should be False.  Otherwise, did_die_from_infection should be True.
-        # Append the results of the infection to the logfile
-        pass
+    def answers_log(self, total_interactions, total_dead, total_infected, virus, pop_size, vacc_percentage, vaccine_total_saves):
+        log = open("answers.txt", "w")
+        log.write(f"""
 
-    def log_time_step(self, time_step_number):
-        #
-        pass
+            What were the inputs you gave the simulation?
+            Initial population size: {pop_size}
+            Vaccinated percentage: {round(vacc_percentage * 100)}%
+            Name of the virus: {virus.name}
+            Mortality rate: {virus.mortality_rate}
+            Reproductive rate was: {virus.repro_rate}
+
+        """)
+
+        log.write(f"""
+
+            What percentage of the population became infected at some point before the virus burned out?
+            {round(total_infected / pop_size * 100)}% of the population became infected at some point before the virus burnt out.
+
+         """)
+
+        log.write(f"""
+
+            What percentage of the population died from the virus?
+            {round(pop_size / total_dead)}% of the population died from the virus.
+
+        """)
+
+        log.write(f"""
+
+            Out of all interactions ({total_interactions}) sick individuals had during the entire simulation, how many times, in total, did a vaccination save someone from potentially becoming infected?
+            The times a vaccine saved a sick individual was {vaccine_total_saves}.
+
+        """)
