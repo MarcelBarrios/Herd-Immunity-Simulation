@@ -33,6 +33,7 @@ class Simulation(object):
         self.num_vaccinated = 0
         self.total_vaccinated = 0
         self.total_dead = 0
+        self.deaths_from_interactions = 0
 
     def _create_population(self):
         # TODO: Create a list of people (Person instances). This list
@@ -128,6 +129,26 @@ class Simulation(object):
             should_continue = self._simulation_should_continue()
             self.time_step()
 
+        living_people = []
+
+        for person in self.population:
+            if person.is_alive:
+                living_people.append(person)
+
+        if len(living_people) == 0:
+            reason_ended = "All people are dead."
+
+        else:
+            all_vaccinated = True
+
+            for person in living_people:
+                if not person.is_vaccinated:
+                    all_vaccinated = False
+                    break
+
+            if all_vaccinated:
+                reason_ended = "All living people are vaccinated."
+
         # TODO: When the simulation completes you should conclude this with
         # the logger. Send the final data to the logger.
         self.logger.write_final(
@@ -137,7 +158,7 @@ class Simulation(object):
             reason_ended=reason_ended,
             total_interactions=self.total_interactions,
             vaccinations_from_interactions=self.total_vaccinated,
-            deaths_from_interactions=self.total_dead,
+            deaths_from_interactions=self.deaths_from_interactions,
         )
 
     def time_step(self):
@@ -169,6 +190,7 @@ class Simulation(object):
                 else:
                     person.is_alive = False
                     self.total_dead += 1
+                    self.deaths_from_interactions += 1
                     self.current_infected -= 1
 
         self._infect_newly_infected()
