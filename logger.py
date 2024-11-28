@@ -32,8 +32,8 @@ class Logger(object):
             file.write("Simulation Metadata\n")
             file.write(
                 "Date Run\tPopulation Size\tInitial Infected\tVaccination Percentage\tVirus Name\tMortality Rate\tBasic Reproduction Number\n")
-            file.write(f"""{date_run}\t{pop_size}\t{initial_infected}\t{vacc_percentage}\t{
-                       virus_name}\t{mortality_rate}\t{basic_repro_num}\n""")
+            file.write(f"""{date_run}\t{pop_size}\t\t\t{initial_infected}\t\t\t\t\t{vacc_percentage}\t\t\t\t\t\t{
+                       virus_name}\t{mortality_rate}\t\t\t\t{basic_repro_num}\n""")
             file.write("-----\n")
 
     def log_interactions(self, current_infected, total_dead, time_step_counter, total_interactions, pop_size, total_vaccinated):

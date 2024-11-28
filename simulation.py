@@ -107,7 +107,7 @@ class Simulation(object):
         self.time_step_counter = 0
         should_continue = True
 
-        simulation_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        simulation_date = datetime.now().strftime("%Y-%m-%d")
 
         # TODO: Write meta data to the logger. This should be starting
         # statistics for the simulation. It should include the initial
@@ -231,7 +231,7 @@ class Simulation(object):
         # TODO: Call logger method during this method.
         self.total_interactions += 1
 
-        if random_person.is_vaccinated:
+        if random_person.is_alive and random_person.is_vaccinated:
             self.vaccine_total_saves += 1
         elif random_person.is_alive == True and random_person.is_vaccinated == False and random_person.infection == None:
             if random.random() < self.virus.repro_rate:
@@ -254,7 +254,7 @@ class Simulation(object):
 if __name__ == "__main__":
     # Test your simulation here
     virus_name = "Sniffles"
-    repro_num = 0.5
+    repro_num = 0.4
     mortality_rate = 0.12
     virus = Virus(virus_name, repro_num, mortality_rate)
 

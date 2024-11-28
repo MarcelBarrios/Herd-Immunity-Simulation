@@ -1,0 +1,25 @@
+
+
+            What were the inputs you gave the simulation?
+            Initial population size: 1000
+            Vaccinated percentage: 10%
+            Name of the virus: Sniffles
+            Mortality rate: 0.12
+            Reproductive rate was: 0.4
+
+        
+
+            What percentage of the population became infected at some point before the virus burned out?
+            90% of the population became infected at some point before the virus burnt out.
+
+         
+
+            What percentage of the population died from the virus?
+            11% of the population died from the virus.
+
+        
+
+            Out of all interactions (90000) sick individuals had during the entire simulation, how many times, in total, did a vaccination save someone from potentially becoming infected?
+            The times a vaccine saved a sick individual was 50327.
+
+        
