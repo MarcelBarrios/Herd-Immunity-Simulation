@@ -36,6 +36,8 @@ class Logger(object):
                        virus_name}\t{mortality_rate}\t\t\t\t{basic_repro_num}\n""")
             file.write("-----\n")
 
+        return
+
     def log_interactions(self, current_infected, total_dead, time_step_counter, total_interactions, pop_size, total_vaccinated):
         # TODO: Finish this method. Think about how the booleans passed (or not passed)
         # represent all the possible edge cases. Use the values passed along with each person,
@@ -50,6 +52,8 @@ class Logger(object):
             file.write(f"Total Interactions: {total_interactions}\n")
             file.write("-----\n")
 
+        return
+
     def write_final(self, total_living, total_dead, num_vaccinated, reason_ended, total_interactions, vaccinations_from_interactions, deaths_from_interactions):
 
         with open(self.file_name, 'a') as file:
@@ -63,6 +67,8 @@ class Logger(object):
                        vaccinations_from_interactions}\n""")
             file.write(f"""Interactions Resulting in Death: {
                        deaths_from_interactions}\n""")
+
+        return
 
     def answers_log(self, total_interactions, total_dead, total_infected, virus, pop_size, vacc_percentage, vaccine_total_saves):
         log = open("answers.txt", "w")
@@ -97,3 +103,4 @@ class Logger(object):
             The times a vaccine saved a sick individual was {vaccine_total_saves}.
 
         """)
+        return

@@ -35,6 +35,7 @@ class Simulation(object):
         self.total_vaccinated = 0
         self.total_dead = 0
         self.deaths_from_interactions = 0
+        self.reason_ended = ""
 
     def _create_population(self):
         # TODO: Create a list of people (Person instances). This list
@@ -78,25 +79,21 @@ class Simulation(object):
         # or if all of the living people have been vaccinated.
         # TODO: Loop over the list of people in the population. Return True
         # if the simulation should continue or False if not.
-        living_people = []
-
-        for person in self.population:
-            if person.is_alive:
-                living_people.append(person)
+        living_people = [
+            person for person in self.population if person.is_alive]
 
         if len(living_people) == 0:
+            self.reason_ended = "All individuals have died."
             return False
 
-        all_vaccinated = True
-        for person in living_people:
-            if not person.is_vaccinated:
-                all_vaccinated = False
-                break
-
-        if all_vaccinated:
+        if self.current_infected == 0:
+            self.reason_ended = "There is no infected people."
             return False
 
-        # simulation keeps going
+        if all(person.is_vaccinated for person in living_people):
+            self.reason_ended = "All living individuals are vaccinated."
+            return False
+
         return True
 
     def run(self):
@@ -156,8 +153,8 @@ class Simulation(object):
             if person.is_alive:
                 living_people.append(person)
 
-        if len(living_people) == 0:
-            reason_ended = "All people are dead."
+        # if len(living_people) == 0:
+        #     self.reason_ended = "All people are dead."
 
         else:
             all_vaccinated = True
@@ -167,8 +164,8 @@ class Simulation(object):
                     all_vaccinated = False
                     break
 
-            if all_vaccinated:
-                reason_ended = "All living people are vaccinated."
+            # if all_vaccinated:
+            #     self.reason_ended = "All living people are vaccinated."
 
         # TODO: When the simulation completes you should conclude this with
         # the logger. Send the final data to the logger.
@@ -176,7 +173,7 @@ class Simulation(object):
             total_living=self.pop_size,
             total_dead=self.total_dead,
             num_vaccinated=self.num_vaccinated,
-            reason_ended=reason_ended,
+            reason_ended=self.reason_ended,
             total_interactions=self.total_interactions,
             vaccinations_from_interactions=self.total_vaccinated,
             deaths_from_interactions=self.deaths_from_interactions,
@@ -252,16 +249,28 @@ class Simulation(object):
 
 
 if __name__ == "__main__":
+
+    if len(sys.argv) < 6:
+        print(
+            "Usage: python3 simulation.py <pop_size> <vacc_percentage> <virus_name> <mortality_rate> <repro_rate> [initial_infected]")
+        sys.exit(1)
+
+    # try:
+    pop_size = int(sys.argv[1])
+    vacc_percentage = float(sys.argv[2])
+    virus_name = sys.argv[3]
+    mortality_rate = float(sys.argv[4])
+    repro_num = float(sys.argv[5])
+    initial_infected = int(sys.argv[6]) if len(
+        sys.argv) > 6 else 1
+    # except ValueError:
+    #     print("Error: Invalid argument types. Please check your input.")
+    #     sys.exit(1)
+
     # Test your simulation here
-    virus_name = "Sniffles"
-    repro_num = 0.4
-    mortality_rate = 0.12
-    virus = Virus(virus_name, repro_num, mortality_rate)
+    # virus = Virus(virus_name, repro_num, mortality_rate)
 
     # Set some values used by the simulation
-    pop_size = 1000
-    vacc_percentage = 0.1
-    initial_infected = 10
 
     # Make a new instance of the imulation
     virus = Virus(virus_name, repro_num, mortality_rate)
