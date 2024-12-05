@@ -1,20 +1,195 @@
 Simulation Metadata
 Date Run	Population Size	Initial Infected	Vaccination Percentage	Virus Name	Mortality Rate	Basic Reproduction Number
-2024-12-04	10000			5					0.8						test	0.7				0.1
+2024-12-04	100000			10					0.9						Ebola	0.7				0.25
 -----
 Simulation Time Step: 1
-Total Population: 10000
+Total Population: 100000
+Currently Infected: 15
+Total Dead: 3
+Total Vaccinated: 0
+Total Interactions: 300
+-----
+Simulation Time Step: 2
+Total Population: 100000
+Currently Infected: 25
+Total Dead: 7
+Total Vaccinated: 1
+Total Interactions: 800
+-----
+Simulation Time Step: 3
+Total Population: 100000
+Currently Infected: 33
+Total Dead: 13
+Total Vaccinated: 5
+Total Interactions: 1800
+-----
+Simulation Time Step: 4
+Total Population: 100000
+Currently Infected: 52
+Total Dead: 20
+Total Vaccinated: 9
+Total Interactions: 2900
+-----
+Simulation Time Step: 5
+Total Population: 100000
+Currently Infected: 80
+Total Dead: 34
+Total Vaccinated: 13
+Total Interactions: 4700
+-----
+Simulation Time Step: 6
+Total Population: 100000
+Currently Infected: 114
+Total Dead: 54
+Total Vaccinated: 23
+Total Interactions: 7700
+-----
+Simulation Time Step: 7
+Total Population: 100000
+Currently Infected: 176
+Total Dead: 85
+Total Vaccinated: 32
+Total Interactions: 11700
+-----
+Simulation Time Step: 8
+Total Population: 100000
+Currently Infected: 268
+Total Dead: 131
+Total Vaccinated: 45
+Total Interactions: 17600
+-----
+Simulation Time Step: 9
+Total Population: 100000
+Currently Infected: 394
+Total Dead: 200
+Total Vaccinated: 75
+Total Interactions: 27500
+-----
+Simulation Time Step: 10
+Total Population: 100000
+Currently Infected: 575
+Total Dead: 305
+Total Vaccinated: 120
+Total Interactions: 42500
+-----
+Simulation Time Step: 11
+Total Population: 100000
+Currently Infected: 846
+Total Dead: 466
+Total Vaccinated: 180
+Total Interactions: 64600
+-----
+Simulation Time Step: 12
+Total Population: 100000
+Currently Infected: 1178
+Total Dead: 712
+Total Vaccinated: 281
+Total Interactions: 99300
+-----
+Simulation Time Step: 13
+Total Population: 100000
+Currently Infected: 1608
+Total Dead: 1059
+Total Vaccinated: 440
+Total Interactions: 149900
+-----
+Simulation Time Step: 14
+Total Population: 100000
+Currently Infected: 2049
+Total Dead: 1598
+Total Vaccinated: 657
+Total Interactions: 225500
+-----
+Simulation Time Step: 15
+Total Population: 100000
+Currently Infected: 2368
+Total Dead: 2362
+Total Vaccinated: 984
+Total Interactions: 334600
+-----
+Simulation Time Step: 16
+Total Population: 100000
+Currently Infected: 2241
+Total Dead: 3380
+Total Vaccinated: 1436
+Total Interactions: 481600
+-----
+Simulation Time Step: 17
+Total Population: 100000
+Currently Infected: 1651
+Total Dead: 4520
+Total Vaccinated: 1900
+Total Interactions: 642000
+-----
+Simulation Time Step: 18
+Total Population: 100000
+Currently Infected: 937
+Total Dead: 5423
+Total Vaccinated: 2298
+Total Interactions: 772100
+-----
+Simulation Time Step: 19
+Total Population: 100000
+Currently Infected: 431
+Total Dead: 5945
+Total Vaccinated: 2545
+Total Interactions: 849000
+-----
+Simulation Time Step: 20
+Total Population: 100000
+Currently Infected: 162
+Total Dead: 6215
+Total Vaccinated: 2644
+Total Interactions: 885900
+-----
+Simulation Time Step: 21
+Total Population: 100000
+Currently Infected: 64
+Total Dead: 6313
+Total Vaccinated: 2684
+Total Interactions: 899700
+-----
+Simulation Time Step: 22
+Total Population: 100000
+Currently Infected: 19
+Total Dead: 6351
+Total Vaccinated: 2702
+Total Interactions: 905300
+-----
+Simulation Time Step: 23
+Total Population: 100000
+Currently Infected: 3
+Total Dead: 6367
+Total Vaccinated: 2704
+Total Interactions: 907100
+-----
+Simulation Time Step: 24
+Total Population: 100000
+Currently Infected: 1
+Total Dead: 6370
+Total Vaccinated: 2704
+Total Interactions: 907400
+-----
+Simulation Time Step: 25
+Total Population: 100000
 Currently Infected: 0
-Total Dead: 1152
-Total Vaccinated: 488
-Total Interactions: 164000
+Total Dead: 6371
+Total Vaccinated: 2704
+Total Interactions: 907500
+-----
+Simulation Time Step: 26
+Total Population: 100000
+Currently Infected: 0
+Total Dead: 6371
+Total Vaccinated: 2704
+Total Interactions: 907500
 -----
 Final Simulation Results
 
-Total Living: 10000
-Total Dead: 1152
-Number of Vaccinations: 8000
+Total Living: 100000
+Total Dead: 6371
+Number of Vaccinations: 90000
 Reason Simulation Ended: There is no infected people.
-Total Number of Interactions: 164000
-Interactions Resulting in Vaccination: 488
-Interactions Resulting in Death: 1152
+Total Number of Interactions: 907500
+Interactions Resulting in Vaccination: 2704
+Interactions Resulting in Death: 6371

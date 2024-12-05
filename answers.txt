@@ -1,25 +1,25 @@
 
 
             What were the inputs you gave the simulation?
-            Initial population size: 10000
-            Vaccinated percentage: 80%
-            Name of the virus: test
+            Initial population size: 100000
+            Vaccinated percentage: 90%
+            Name of the virus: Ebola
             Mortality rate: 0.7
-            Reproductive rate was: 0.1
+            Reproductive rate was: 0.25
 
         
 
             What percentage of the population became infected at some point before the virus burned out?
-            16% of the population became infected at some point before the virus burnt out.
+            9% of the population became infected at some point before the virus burnt out.
 
          
 
             What percentage of the population died from the virus?
-            9% of the population died from the virus.
+            16% of the population died from the virus.
 
         
 
-            Out of all interactions (164000) sick individuals had during the entire simulation, how many times, in total, did a vaccination save someone from potentially becoming infected?
-            The times a vaccine saved a sick individual was 144685.
+            Out of all interactions (907500) sick individuals had during the entire simulation, how many times, in total, did a vaccination save someone from potentially becoming infected?
+            The times a vaccine saved a sick individual was 860947.
 
         
